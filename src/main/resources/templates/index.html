@@ -15,19 +15,19 @@
 <form action="#" th:action="@{/calculate}" th:object="${calculateObject}" method="post">
     <div class="form-group">
         <label for="powerInKWInput">Power in kW</label>
-    	<input type="text" class="form-control" id="powerInKWInput"  th:field="*{powerInKW}" />
+    	<input type="text" class="form-control" id="powerInKWInput"  th:field="${calculateObject.powerInKW}" />
     </div>
     <div class="form-group">
         <label for="batteryInKWInput">Battery in kW</label>
-    	<input type="text" class="form-control" id="batteryInKWInput"  th:field="*{batteryInKW}" />
+    	<input type="text" class="form-control" id="batteryInKWInput"  th:field="${calculateObject.batteryInKW}" />
     </div>
     <div class="form-group">
         <label for="priceperKWInput">Price per kW</label>
-    	<input type="text" class="form-control" id="priceperKWInput"  th:field="*{pricePerKW}" />
+    	<input type="text" class="form-control" id="priceperKWInput"  th:field="${calculateObject.pricePerKW}" />
     </div>
     <div class="form-group">
         <label for="batteryPercentageInput">Battery Percentage</label>
-    	<input type="text" class="form-control" id="priceperKWInput"  th:field="*{pricePerKW}" />
+    	<input type="text" class="form-control" id="batteryPercentageInput"  th:field="${calculateObject.batteryPercentage}" />
     	<small id="batteryPercentageHelp" class="form-text text-muted">Values should be added like 0.5 for 50% battery.</small>
     	
     </div>  

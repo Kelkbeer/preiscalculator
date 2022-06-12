@@ -16,13 +16,17 @@ public class PreisCalculatorController {
 	@PostMapping("/calculate")
 	String Calculate(@ModelAttribute CalculateObject calculateObject, Model model) {
 
-		var batteryToBeCharged = calculateObject.getBatteryInKW()
-				- (calculateObject.getBatteryInKW() * calculateObject.getBatteryPercentage());
+		var currentBatteryLevel = (calculateObject.getBatteryInKW() * calculateObject.getBatteryPercentage());
+		var batteryToBeCharged = calculateObject.getBatteryInKW() - currentBatteryLevel;
 		var estimatedTimeInMins = (batteryToBeCharged / calculateObject.getPowerInKW()) * 60;
 		var estimatedCost = batteryToBeCharged * calculateObject.getPricePerKW();
 		
+		System.out.println("Battery to be charged "+ batteryToBeCharged + " Current Batetry Percentage "+ calculateObject.getBatteryPercentage()+" Power in Kw "+ 
+		calculateObject.getPowerInKW()+ " "+calculateObject.getPricePerKW());
+
 		model.addAttribute("estimatedTimeInMins", dfZero.format(estimatedTimeInMins));
 		model.addAttribute("estimatedCost", dfZero.format(estimatedCost));
+		
 		
 		return "result";
 	}
